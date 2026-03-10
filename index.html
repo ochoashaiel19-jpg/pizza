@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Laurel de Apolo | Pizzería Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003049;
+            --danger: #d62828;
+            --accent-orange: #f77f00;
+            --secondary: #f6ae2d;
+            --cream: #eae2b7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream);
+            color: var(--primary);
+            scroll-behavior: smooth;
+        }
+
+        .bg-primary { background-color: var(--primary); }
+        .bg-danger { background-color: var(--danger); }
+        .bg-accent { background-color: var(--accent-orange); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-cream { background-color: var(--cream); }
+        
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-danger { color: var(--danger); }
+
+        .btn-primary {
+            background-color: var(--danger);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-orange);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .pizza-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,48,73,0.15);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 48, 73, 0.7), rgba(0, 48, 73, 0.7)), 
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            height: 90vh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-primary text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold flex items-center gap-2">
+                <span class="text-secondary italic">EL LAUREL</span> DE APOLO
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#menu" class="nav-link">Elige tu Pizza</a>
+                <a href="#reseñas" class="nav-link">Reseñas</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+
+            <!-- Mobile Menu Icon -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary px-6 pb-6">
+            <a href="#inicio" class="block py-2">Inicio</a>
+            <a href="#menu" class="block py-2">Elige tu Pizza</a>
+            <a href="#reseñas" class="block py-2">Reseñas</a>
+            <a href="#contacto" class="block py-2">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Inicio / Portada -->
+    <section id="inicio" class="hero-section flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">El Laurel de Apolo</h1>
+            <p class="text-xl md:text-2xl mb-8 text-secondary font-light">25 años perfeccionando el arte de la pizza artesanal.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="btn-primary px-8 py-4 rounded-full font-bold text-lg inline-block">Ver Menú</a>
+                <a href="#contacto" class="bg-transparent border-2 border-secondary text-secondary px-8 py-4 rounded-full font-bold text-lg hover:bg-secondary hover:text-primary transition-all">Visítanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elige tu Pizza -->
+    <section id="menu" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-2">Nuestras Especialidades</h2>
+                <div class="w-24 h-1 bg-danger mx-auto mb-4"></div>
+                <p class="text-gray-600 italic">Masa madre, ingredientes frescos y el toque secreto de Apolo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Pizza 1 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbad80ad38?auto=format&fit=crop&q=80&w=800" alt="Margherita" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Margherita Clásica</h3>
+                            <span class="text-danger font-bold">$12.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Pomodoro italiano, mozzarella de búfala, albahaca fresca y aceite de oliva virgen.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+
+                <!-- Pizza 2 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&q=80&w=800" alt="Pepperoni" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Apolo Pepperoni</h3>
+                            <span class="text-danger font-bold">$14.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Doble ración de pepperoni premium sobre base de tres quesos de la casa.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+
+                <!-- Pizza 3 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800" alt="Vegetariana" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Huerta del Laurel</h3>
+                            <span class="text-danger font-bold">$13.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Pimientos asados, aceitunas negras, champiñones, cebolla morada y espinaca.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+
+                <!-- Pizza 4 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=800" alt="Carnes" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Gran Banquete</h3>
+                            <span class="text-danger font-bold">$16.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Jamón serrano, tocino ahumado, carne de res y salami italiano.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+
+                <!-- Pizza 5 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=800" alt="Cuatro Quesos" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Monte Olimpo</h3>
+                            <span class="text-danger font-bold">$15.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Gorgonzola, parmesano reggiano, mozzarella y queso cabra con miel.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+
+                <!-- Pizza 6 -->
+                <div class="pizza-card bg-white rounded-2xl overflow-hidden shadow-md transition-all">
+                    <img src="https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&q=80&w=800" alt="Fugazzeta" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-primary">Laurel Especial</h3>
+                            <span class="text-danger font-bold">$14.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Cebolla caramelizada, especias secretas y aceite de laurel infusionado.</p>
+                        <button class="w-full py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">Pedir Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reseñas -->
+    <section id="reseñas" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-2">La Voz de Nuestros Clientes</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 p-8 rounded-xl border border-white/20">
+                    <div class="flex text-secondary mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic mb-6">"Llevo viniendo 15 años y el sabor sigue siendo el mismo. Es la mejor pizza de la ciudad sin ninguna duda."</p>
+                    <div class="font-bold text-secondary">— Carlos Mendoza</div>
+                </div>
+
+                <div class="bg-white/10 p-8 rounded-xl border border-white/20">
+                    <div class="flex text-secondary mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic mb-6">"La masa madre es increíble. Se nota la calidad de los ingredientes y la atención es siempre impecable."</p>
+                    <div class="font-bold text-secondary">— Laura Restrepo</div>
+                </div>
+
+                <div class="bg-white/10 p-8 rounded-xl border border-white/20">
+                    <div class="flex text-secondary mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic mb-6">"Un ambiente elegante y tradicional. Pedimos la Laurel Especial y fue una explosión de sabor."</p>
+                    <div class="font-bold text-secondary">— Miguel Ángel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y Ubicación -->
+    <section id="contacto" class="py-20 bg-cream text-primary">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- Información -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold mb-6">Contáctanos</h2>
+                    <p class="text-lg mb-8">¿Tienes hambre? Haz tu pedido o visítanos en nuestro local tradicional.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-danger text-white rounded-full flex items-center justify-center text-xl">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Teléfono</h4>
+                                <p>+54 11 4567-8900</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Ubicación</h4>
+                                <p>Av. Principal 1234, Barrio Antiguo</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center text-xl">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Horarios</h4>
+                                <p>Mar - Dom: 19:00 a 00:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 flex gap-4">
+                        <a href="#" class="text-primary text-2xl hover:text-danger"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-primary text-2xl hover:text-danger"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-primary text-2xl hover:text-danger"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Mapa Simulado / Formulario -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-primary p-8 rounded-3xl shadow-2xl text-white">
+                        <h3 class="text-2xl font-bold mb-6 text-secondary">Escríbenos</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label class="block mb-1 text-sm font-medium">Nombre</label>
+                                <input type="text" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-secondary focus:outline-none" placeholder="Tu nombre">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium">Email</label>
+                                <input type="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-secondary focus:outline-none" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium">Mensaje</label>
+                                <textarea rows="4" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-secondary focus:outline-none" placeholder="¿En qué podemos ayudarte?"></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary py-10 border-t border-white/10 text-white/60">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-4">
+                <span class="text-secondary italic">EL LAUREL</span> DE APOLO
+            </div>
+            <p>© 2024 El Laurel de Apolo. 25 Años de Tradición. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica del menú móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Simulación de envío de formulario
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "¡Mensaje Enviado!";
+            btn.style.backgroundColor = "#28a745";
+            this.reset();
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = "";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
